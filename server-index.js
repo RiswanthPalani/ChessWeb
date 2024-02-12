@@ -8,6 +8,11 @@ import bodyParser from "body-parser";
  const port=3000;
  var name1="";
  var name2="";
+ 
+ app.post("/term=1",(req,res)=>{
+  const count = req.body.count;
+  res.render('index.ejs',{bpawnc:count});
+ });
  app.post("/submit",(req,res)=>{
    
      name1 = req.body["name1"]; 

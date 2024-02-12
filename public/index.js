@@ -9,6 +9,8 @@ const temp = params.get('temp');
   return String.fromCharCode(char.charCodeAt(0) - num);
  }
  
+ var wqueenc=0,wrookc=0,wknightc=0,wbishopc=0,wpawnc=0;
+ var bqueenc=0,brookc=0,bknightc=0,bbishopc=0,bpawnc=0;
  
 
  var turn='w';
@@ -962,8 +964,57 @@ else turn='w';
  
 
 });
+
+function updateCount(element){
+
+     //alert();
+       if(element.find('img').hasClass('white pawn')){
+        wpawnc++;
+        $('#wpawnc').text('x '+wpawnc);
+       }
+       if(element.find('img').hasClass('white queen')){
+        wqueenc++;
+        $('#wqueenc').text('x '+wqueenc);
+       }
+       if(element.find('img').hasClass('white rook')){
+        wrookc++;
+        $('#wrookc').text('x '+wrookc);
+       }
+       if(element.find('img').hasClass('white bishop')){
+        wbishopc++;
+        $('#wbishopc').text('x '+wbishopc);
+       }
+       if(element.find('img').hasClass('white knight')){
+        wknightc++;
+        $('#wknightc').text('x '+wknightc);
+       }
+       if(element.find('img').hasClass('black pawn')){
+        bpawnc++;
+        $('#bpawnc').text('x '+bpawnc);
+       }
+       if(element.find('img').hasClass('black queen')){
+        bqueenc++;
+        $('#bqueenc').text('x '+bqueenc);
+       }
+       if(element.find('img').hasClass('black rook')){
+        brookc++;
+        $('#brookc').text('x '+brookc);
+       }
+       if(element.find('img').hasClass('black bishop')){
+        bbishopc++;
+        $('#bbishopc').text('x '+bbishopc);
+       }
+       if(element.find('img').hasClass('black knight')){
+        bknightc++;
+        $('#bknightc').text('x '+bknightc);
+       }
+}
+
 $(document).on('click', '.red-highlight', function() {
-  
+ 
+ 
+
+  updateCount($(this));
   var stored = $('.clicked') ;
   var row = $('.clicked').closest('.row').attr('id');
   var colm = $('.clicked').closest('.colm').attr('id');
@@ -973,7 +1024,7 @@ $(document).on('click', '.red-highlight', function() {
   else if( $('#'+row+' #'+colm).hasClass('bp'))
   $('#'+row+' #'+colm).removeClass('bp');
   
- 
+  
 
     if($(this).hasClass('wp')){
       $(this).removeClass('wp');
@@ -995,6 +1046,10 @@ $(document).on('click', '.red-highlight', function() {
   if(turn==='w')
   {turn='b';  }
 else turn='w';
+
+    
+      
+      
  
 
 });
